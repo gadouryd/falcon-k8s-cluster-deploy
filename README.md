@@ -58,6 +58,7 @@ Script references falcon-container-sensor-pull.sh from https://github.com/CrowdS
 ./falcon-k8s-cluster-deploy.sh \
 --client-id <ABCDEFG123456> \
 --client-secret <ABCDEFG123456> \
+--region <FALCON_REGION>
 --cluster <myclustername>
 
 ```
