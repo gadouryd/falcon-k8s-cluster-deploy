@@ -25,7 +25,7 @@ usage: ./falcon-k8s-cluster-deploy.sh
 Required Flags:
     -u, --client-id <FALCON_CLIENT_ID>             Falcon API OAUTH Client ID
     -s, --client-secret <FALCON_CLIENT_SECRET>     Falcon API OAUTH Client Secret
-    -r, --region <FALCON_REGION>                   Falcon Cloud Region [us-1, us-2, eu-1, gov-1, or gov-2]
+    -r, --region <FALCON_REGION>                   Falcon Cloud Region [us-1, us-2, eu-1, us-gov-1, or us-gov-2]
     -c, --cluster <K8S_CLUSTER_NAME>               Cluster name
 Optional Flags:
     --sidecar                        Deploy container sensor as sidecar. Existing pods must be restarted to install sidecar sensors.
@@ -56,7 +56,7 @@ Script references falcon-container-sensor-pull.sh from https://github.com/CrowdS
 export FALCON_CLIENT_ID=<your client id>
 export FALCON_CLIENT_SECRET=<your client secret>
 export K8S_CLUSTER_NAME=<name of kubernetes cluster>
-export FALCON_CLOUD=
+export FALCON_CLOUD=<your falcon cloud region>
 
 ```
   
@@ -67,6 +67,7 @@ export FALCON_CLOUD=
 ./falcon-k8s-cluster-deploy.sh \
 --client-id <ABCDEFG123456> \
 --client-secret <ABCDEFG123456> \
+--region <FALCON_REGION> \
 --cluster <myclustername>
 
 ```
@@ -82,6 +83,7 @@ export FALCON_CLOUD=
 ./falcon-k8s-cluster-deploy.sh \
 --client-id <ABCDEFG123456> \
 --client-secret <ABCDEFG123456> \
+--region <FALCON_REGION>
 --cluster <myclustername> \
 --sidecar
 
@@ -97,7 +99,7 @@ export FALCON_CLOUD=
 |:-----------------------------------------------|-------------------------|----------------------------|------------------------------------------------------------------------------------------|
 | `-u`, `--client-id <FALCON_CLIENT_ID>` | `$FALCON_CLIENT_ID` | `None` (Required) | CrowdStrike API Client ID 
 | `-s`, `--client-secret <FALCON_CLIENT_SECRET>` | `$FALCON_CLIENT_SECRET` | `None` (Required) | CrowdStrike API Client Secret |
-| `-r`, `--region <FALCON_CLOUD>` | `$FALCON_CLOUD` | `None` (Required) | CrowdStrike Region | |
+| `-r`, `--region <FALCON_REGION>` | `$FALCON_CLOUD` | `None` (Required) | CrowdStrike Region | |
 | `-c` | `K8S_CLUSTER_NAME` | `None` (Required) | Name of Kubernetes Cluster
 | `--sidecar` | N/A | `false` | Deploys sidecar sensor injector as daemonset
 | `--ebpf` | N/A | `false` | Deploys node sensor in user / eBPF mode instead of kernel mode. Not compatible with sidecar sensor.
